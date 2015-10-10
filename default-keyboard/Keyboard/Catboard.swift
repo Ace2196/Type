@@ -35,7 +35,7 @@ class Catboard: KeyboardViewController {
             if !NSUserDefaults.standardUserDefaults().boolForKey(kCatTypeEnabled) {
                 textDocumentProxy.insertText(keyOutput)
                 currentString += keyOutput
-                NSLog(currentString)
+                self.changeInCurrentString()
                 return
             }
             

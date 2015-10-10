@@ -55,6 +55,10 @@ class KeyboardViewController: UIInputViewController {
         case NoSpace
         case FirstSpace
     }
+
+    func changeInCurrentString() {
+
+    }
     
     var autoPeriodState: AutoPeriodState = .NoSpace
     var lastCharCountInBeforeContext: Int = 0
@@ -552,6 +556,7 @@ class KeyboardViewController: UIInputViewController {
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
             currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            changeInCurrentString()
         }
         self.setCapsIfNeeded()
         
@@ -574,6 +579,7 @@ class KeyboardViewController: UIInputViewController {
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
             currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            changeInCurrentString()
         }
         self.setCapsIfNeeded()
     }
