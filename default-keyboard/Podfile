@@ -5,3 +5,4 @@ use_frameworks!
 pod 'p2.OAuth2'
 pod 'Alamofire'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod "LiquidFloatingActionButton"
