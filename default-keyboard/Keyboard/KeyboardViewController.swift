@@ -9,11 +9,6 @@
 import UIKit
 import AudioToolbox
 
-let metrics: [String:Double] = [
-    "topBanner": 30
-]
-func metric(name: String) -> CGFloat { return CGFloat(metrics[name]!) }
-
 // TODO: move this somewhere else and localize
 let kAutoCapitalization = "kAutoCapitalization"
 let kPeriodShortcut = "kPeriodShortcut"
@@ -32,6 +27,11 @@ class KeyboardViewController: UIInputViewController {
     
     var bannerView: ExtraView?
     var settingsView: ExtraView?
+
+    var suggestions = [String]()
+
+    var metrics: [String:Double] = [String:Double]()
+    func metric(name: String) -> CGFloat { return CGFloat(metrics[name]!) }
 
     var currentString = ""
     
@@ -116,6 +116,7 @@ class KeyboardViewController: UIInputViewController {
         self.view.addSubview(self.forwardingView)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("defaultsChanged:"), name: NSUserDefaultsDidChangeNotification, object: nil)
+        metrics["topBanner"] = self.suggestions.isEmpty ? 30.0 : 90.0
     }
     
     required init?(coder: NSCoder) {
@@ -250,9 +251,20 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.bannerView?.hidden = true
-        self.keyboardHeight = self.heightForOrientation(self.interfaceOrientation, withTopBanner: false)
+        updateHeight()
     }
+
+    func updateHeight() {
+        if self.suggestions.isEmpty {
+            self.bannerView?.hidden = true
+            self.keyboardHeight = self.heightForOrientation(self.interfaceOrientation, withTopBanner: false)
+        } else {
+            self.bannerView?.hidden = false
+            self.keyboardHeight = self.heightForOrientation(self.interfaceOrientation, withTopBanner: true)
+        }
+    }
+
+
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.forwardingView.resetTrackedViews()
@@ -285,7 +297,8 @@ class KeyboardViewController: UIInputViewController {
         let actualScreenWidth = (UIScreen.mainScreen().nativeBounds.size.width / UIScreen.mainScreen().nativeScale)
         let canonicalPortraitHeight = (isPad ? CGFloat(264) : CGFloat(orientation.isPortrait && actualScreenWidth >= 400 ? 226 : 216))
         let canonicalLandscapeHeight = (isPad ? CGFloat(352) : CGFloat(162))
-        let topBannerHeight = (withTopBanner ? metric("topBanner") : 0)
+        let metricTopBanner = self.suggestions.isEmpty ? CGFloat(30) : CGFloat(90)
+        let topBannerHeight = (withTopBanner ? metricTopBanner : 0)
         
         return CGFloat(orientation.isPortrait ? canonicalPortraitHeight + topBannerHeight : canonicalLandscapeHeight + topBannerHeight)
     }
@@ -663,6 +676,9 @@ class KeyboardViewController: UIInputViewController {
     @IBAction func toggleSettings(sender: KeyboardKey) {
         uberStateActive = !uberStateActive
         sender.selected = uberStateActive
+
+//        suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
+        updateHeight()
     }
     
     func setCapsIfNeeded() -> Bool {
