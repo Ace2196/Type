@@ -11,9 +11,12 @@ import UIKit
 class HostingAppViewController: UIViewController {
     
     @IBOutlet var stats: UILabel?
+    var server: NetworkUI?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        server = NetworkUI.sharedInstance
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardDidHide"), name: UIKeyboardDidHideNotification, object: nil)
@@ -31,6 +34,20 @@ class HostingAppViewController: UIViewController {
                 inputView.resignFirstResponder()
             }
         }
+    }
+    @IBAction func bestButtonEver(sender: UIButton) {
+        print(server!.hasOAuthToken())
+        if server!.hasOAuthToken() {
+            let parameters = ["requestID":""]
+            server!.sendSandboxUberRequest(parameters, success: { (response) -> Void in
+                print(response)
+                }) { (error) -> Void in
+                    print ("buang")
+            }
+        } else {
+            server?.startOAuthSandboxUber()
+        }
+        
     }
     
     var startTime: NSTimeInterval?

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        NetworkUI.sharedInstance.processOAuthStep2Response(url)
         return true
     }
 

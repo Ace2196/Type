@@ -29,10 +29,10 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>typeApp</string>
+				<string>TypeApp</string>
 			</array>
 			<key>CFBundleURLName</key>
-			<string>typeApp</string>
+			<string>TypeApp</string>
 		</dict>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>

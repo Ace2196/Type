@@ -32,21 +32,26 @@ class NetworkUI:NSObject {
     
     /* Static Info */
     
-    let clientID: String = "1234567890"
-    let clientSecret: String = "abcdefghijkl"
+    let clientID = CLIENT_ID
+    let clientSecret = CLIENT_SECRET
     
-    
+    var _scope: String?
+    var _token_type: String?
+    var _OAuthToken: String?
     var OAuthToken: String? {
-        set {
-            if let valueToSave = newValue {
-                addSessionHeader("Authorization", value: "token \(valueToSave)")
-            }
-            else { // they set it to nil
+        set(val) {
+            print(val)
+            if val != nil {
+                print("yeah")
+                addSessionHeader("Authorization", value: "Authorization: \(_token_type) \(val)")
+                _OAuthToken = val
+            } else { // they set it to nil
+                print("wut")
                 removeSessionHeaderIfExists("Authorization")
+                _OAuthToken = nil
             }
         } get {
-            // TODO: implement
-            return ""
+            return _OAuthToken
         }
     }
     
@@ -79,8 +84,8 @@ class NetworkUI:NSObject {
     /* OAuth */
     // Checks whether NetworkUI already has OAuth2 Token.
     func hasOAuthToken() -> Bool {
-        if let token = self.OAuthToken {
-            return !token.isEmpty
+        if self.OAuthToken != nil {
+            return true
         }
         return false
     }
@@ -92,7 +97,7 @@ class NetworkUI:NSObject {
     
     // Get OAuth2Token.
     func startOAuthSandboxUber() {
-        let authPath:String = "https://login.uber.com/oauth/v2/authorize"
+        let authPath:String = "https://login.uber.com/oauth/v2/authorize?client_id=\(clientID)&response_type=code&scope=request"
         if let authURL:NSURL = NSURL(string: authPath) {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setBool(true, forKey: "loadingOauthToken")
@@ -122,7 +127,9 @@ class NetworkUI:NSObject {
                 "client_secret": clientSecret,
                 "code": receivedCode,
                 "grant_type": "authorization_code",
+                "redirect_uri": "TypeApp://oauth/callback",
             ]
+            print(tokenParams)
             
             // Step three: Get an access token.
             Alamofire.request(.POST, getTokenPath, parameters: tokenParams)
@@ -140,10 +147,11 @@ class NetworkUI:NSObject {
                         return
                     }
                     if results.isSuccess {
+                        print("succeeded!")
                         let receivedResults = JSON(results.value!)
-                        self.OAuthToken = receivedResults["access_token"].string
-//                        self.scope = receivedResults["scope"]
-//                        self.token_type = receivedResults["token_type"]
+                        self.OAuthToken = receivedResults["access_token"].stringValue
+                        self._scope = receivedResults["scope"].stringValue
+                        self._token_type = receivedResults["token_type"].stringValue
                     }
                     
                     
