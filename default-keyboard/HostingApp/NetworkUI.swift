@@ -138,31 +138,35 @@ class NetworkUI:NSObject {
                         defaults.setBool(false, forKey: "loadingOAuthToken")
                         return
                     }
-                    print(results)
-                    if let receivedResults = results {
-                        let resultParams:Array<String> = split(receivedResults) {$0 == "&"}
-                        for param in resultParams
-                        {
-                            let resultsSplit = split(param) { $0 == "=" }
-                            if (resultsSplit.count == 2)
-                            {
-                                let key = resultsSplit[0].lowercaseString // access_token, scope, token_type
-                                let value = resultsSplit[1]
-                                switch key {
-                                case "access_token":
-                                    self.OAuthToken = value
-                                case "scope":
-                                    // TODO: Verify scope.
-                                    print("SET SCOPE")
-                                case "token_type":
-                                    // TODO: Verify is Bearer.
-                                    print("CHECK IF BEARER")
-                                default:
-                                    print("got more than I expected from the OAuth token exchange")
-                                }
-                            }
-                        }
+                    if results.isSuccess {
+                        let receivedResults = JSON(results.value!)
+                        self.OAuthToken = receivedResults["access_token"]
+                        self.scope = receivedResults["scope"]
+                        self.token_type = receivedResults["token_type"]
+//                        let resultParams:Array<String> = receivedResults.characters.split("&")
+//                        for param in resultParams
+//                        {
+//                            let resultsSplit = param.charaters.split { $0 ="=" }
+//                            if (resultsSplit.count == 2)
+//                            {
+//                                let key = resultsSplit[0].lowercaseString // access_token, scope, token_type
+//                                let value = resultsSplit[1]
+//                                switch key {
+//                                case "access_token":
+//                                    self.OAuthToken = value
+//                                case "scope":
+//                                    // TODO: Verify scope.
+//                                    print("SET SCOPE")
+//                                case "token_type":
+//                                    // TODO: Verify is Bearer.
+//                                    print("CHECK IF BEARER")
+//                                default:
+//                                    print("got more than I expected from the OAuth token exchange")
+//                                }
+//                            }
+//                        }
                     }
+                    
                     
                     let defaults = NSUserDefaults.standardUserDefaults()
                     defaults.setBool(false, forKey: "loadingOAuthToken")
