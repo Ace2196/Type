@@ -29,10 +29,9 @@ class LocationManager {
     }
     
     func postInputString(input: NSString) {
-        let newinput = "391 Burgoyne Street"
-        let processed = newinput.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        let processed = input.stringByReplacingOccurrencesOfString(" ", withString: "+")
         
-        let urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=\(processed)&key=GOOGLE_API_KEY_HERE"
+        let urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=\(processed)&key=\(GappApiKey.key)"
         makeGetRequest(urlString) { json in
             let results: [String: String] = self.convertJSONResponseToSearchResults(json)
             self.getTest(Array(results.keys))
