@@ -32,12 +32,13 @@ class NetworkUI:NSObject {
     
     /* Functions */
     
+    
     /*
     * @params : requestID
     */
     func sendSandboxUberRequest(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
         
-        let requestID = params["requestID"] as String
+        let requestID = params["requestID"] as! String
         
         Alamofire.request(.PUT, String(format: "%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID), parameters: params)
             .responseJSON { request, response, result in
