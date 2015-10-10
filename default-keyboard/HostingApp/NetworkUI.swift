@@ -67,11 +67,9 @@ class NetworkUI:NSObject {
         }
     }
     
-    func removeSessionHeaderIfExists(key: String)
-    {
+    func removeSessionHeaderIfExists(key: String) {
         let manager = Alamofire.Manager.sharedInstance
-        if var sessionHeaders = manager.session.configuration.HTTPAdditionalHeaders as? Dictionary<String, String>getMyRe
-        {
+        if var sessionHeaders = manager.session.configuration.HTTPAdditionalHeaders as? Dictionary<String, String> {
             sessionHeaders.removeValueForKey(key)
             manager.session.configuration.HTTPAdditionalHeaders = sessionHeaders
         }
@@ -80,7 +78,9 @@ class NetworkUI:NSObject {
     /* OAuth */
     // Checks whether NetworkUI already has OAuth2 Token.
     func hasOAuthToken() -> Bool {
-        // TODO
+        if let token = self.OAuthToken {
+            return !token.isEmpty
+        }
         return false
     }
     
@@ -93,6 +93,8 @@ class NetworkUI:NSObject {
     func startOAuthSandboxUber() {
         let authPath:String = "https://login.uber.com/oauth/v2/authorize"
         if let authURL:NSURL = NSURL(string: authPath) {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setBool(true, forKey: "loadingOauthToken")
             UIApplication.sharedApplication().openURL(authURL)
         }
     }
@@ -121,6 +123,7 @@ class NetworkUI:NSObject {
                 "grant_type": "authorization_code",
             ]
             
+            // Step three: Get an access token.
             Alamofire.request(.POST, getTokenPath, parameters: tokenParams)
                 .responseString { (request, response, results) in
                     if let anError = results.error
@@ -128,7 +131,7 @@ class NetworkUI:NSObject {
                         print(anError)
                         if let completionHandler = self.OAuthTokenCompletionHandler
                         {
-                            let nOAuthError = NSError(domain: AlamofireErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
+                            let nOAuthError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
                             completionHandler(nOAuthError)
                         }
                         let defaults = NSUserDefaults.standardUserDefaults()
@@ -136,8 +139,7 @@ class NetworkUI:NSObject {
                         return
                     }
                     print(results)
-                    if let receivedResults = results
-                    {
+                    if let receivedResults = results {
                         let resultParams:Array<String> = split(receivedResults) {$0 == "&"}
                         for param in resultParams
                         {
@@ -176,7 +178,7 @@ class NetworkUI:NSObject {
                     {
                         if let completionHandler = self.OAuthTokenCompletionHandler
                         {
-                            let nOAuthError = NSError(domain: AlamofireErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
+                            let nOAuthError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
                             completionHandler(nOAuthError)
                         }
                     }
@@ -206,91 +208,6 @@ class NetworkUI:NSObject {
                     failure(error: result.error)
                 }
                 
-        }
+            }
     }
-    
-//    func callRequestAPI(url:String){
-//        
-//        var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//        var session = NSURLSession(configuration: configuration)
-//        
-//        let params:[String: AnyObject] = [
-//            "product_id" : selectedUberProductId,
-//            "start_latitude" : start_lat,
-//            "start_longitude" : start_lng,
-//            "end_latitude" : end_lat,
-//            "end_longitude" : end_lng]
-//        
-//        
-//        
-//        let request = appDelegate.oauth.request(forURL: NSURL(string:url)!)
-//        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-//        request.HTTPMethod = "POST"
-//        var err: NSError?
-//        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.allZeros, error: &err)
-//        
-//        let task = session.dataTaskWithRequest(request) {
-//            data, response, error in
-//            
-//            if let httpResponse = response as? NSHTTPURLResponse {
-//                if httpResponse.statusCode != 202 {
-//                    println("response was not 202: \(response)")
-//                    
-//                    return
-//                }
-//            }
-//            if (error != nil) {
-//                println("error submitting request: \(error)")
-//                return
-//            }
-//            
-//            // handle the data of the successful response here
-//            var result = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.allZeros, error: nil) as! NSDictionary
-//            
-//            
-//            println(result)
-//            
-//            if let request_id: String = result["request_id"] as? String{
-//                
-//                println(request_id)
-//            }
-//            
-//            if let driver: String = result["driver"] as? String{
-//                
-//                println(driver)
-//            }
-//            
-//            if let eta: Int = result["eta"] as? Int{
-//                
-//                println(eta)
-//            }
-//            
-//            if let location: String = result["location"] as? String{
-//                
-//                println(location)
-//            }
-//            
-//            
-//            if let status: String = result["status"] as? String{
-//                
-//                println(status)
-//            }
-//            
-//            
-//            if let surge_multiplier: Int = result["surge_multiplier"] as? Int{
-//                
-//                println(surge_multiplier)
-//            }
-//            
-//            if let vehicle: String = result["vehicle"] as? String{
-//                
-//                println(vehicle)
-//            }
-//            
-//        }
-//        
-//        task.resume()
-//        
-//    }
-//
-//}
+}
