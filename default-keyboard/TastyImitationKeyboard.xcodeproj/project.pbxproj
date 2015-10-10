@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C2712EA3AF901019A96E63E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C4A5145C54CB84E766C433 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0C2712EA3AF901019A96E63E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C4A5145C54CB84E766C433 /* Pods.framework */; };
 		41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1DAD11BC92D76000693E1 /* NetworkUI.swift */; settings = {ASSET_TAGS = (); }; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
