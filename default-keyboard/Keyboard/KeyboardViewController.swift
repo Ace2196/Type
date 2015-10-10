@@ -682,6 +682,9 @@ class KeyboardViewController: UIInputViewController {
         } else {
             suggestions = []
         }
+        self.bannerView?.removeFromSuperview()
+        self.bannerView = createBanner()
+        self.view.addSubview(self.bannerView!)
         updateHeight()
     }
     
