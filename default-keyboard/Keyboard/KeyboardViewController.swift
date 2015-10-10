@@ -233,8 +233,8 @@ class KeyboardViewController: UIInputViewController {
             self.lastLayoutBounds = orientationSavvyBounds
             self.setupKeys()
         }
-        
-        self.bannerView?.frame = CGRectMake(0, 0, self.view.bounds.width, metric("topBanner"))
+        let metricTopBanner = self.suggestions.isEmpty ? CGFloat(30) : CGFloat(90)
+        self.bannerView?.frame = CGRectMake(0, 0, self.view.bounds.width, metricTopBanner)
         
         let newOrigin = CGPointMake(0, self.view.bounds.height - self.forwardingView.bounds.height)
         self.forwardingView.frame.origin = newOrigin
@@ -677,7 +677,11 @@ class KeyboardViewController: UIInputViewController {
         uberStateActive = !uberStateActive
         sender.selected = uberStateActive
 
-//        suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
+        if suggestions.count == 0 {
+            suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
+        } else {
+            suggestions = []
+        }
         updateHeight()
     }
     
