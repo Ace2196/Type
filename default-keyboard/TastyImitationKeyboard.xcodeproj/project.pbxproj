@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C2712EA3AF901019A96E63E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C4A5145C54CB84E766C433 /* Pods.framework */; };
+		419847491BC9780B005E570C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419847481BC9780B005E570C /* APIKey.swift */; settings = {ASSET_TAGS = (); }; };
 		41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1DAD11BC92D76000693E1 /* NetworkUI.swift */; settings = {ASSET_TAGS = (); }; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		2E36CFB813272E3B4FEADFAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		419847481BC9780B005E570C /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		41F1DAD11BC92D76000693E1 /* NetworkUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUI.swift; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */,
+				419847481BC9780B005E570C /* APIKey.swift */,
 				4EF16F9519D255030076AFCB /* ViewController.swift */,
 				41F1DAD11BC92D76000693E1 /* NetworkUI.swift */,
 				4EF16F9D19D2552E0076AFCB /* Main.storyboard */,
@@ -536,6 +539,7 @@
 			files = (
 				4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */,
 				4EF16F9819D255030076AFCB /* ViewController.swift in Sources */,
+				419847491BC9780B005E570C /* APIKey.swift in Sources */,
 				41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
