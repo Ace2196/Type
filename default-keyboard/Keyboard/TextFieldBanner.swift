@@ -32,11 +32,13 @@ class TextFieldBanner: ExtraView {
     }
     
     override func layoutSubviews() {
+
         super.layoutSubviews()
         self.textField = UITextField(frame: CGRectMake(5, 5, self.frame.width - 10, self.frame.height))
         textField.layer.cornerRadius = 3.0
         textField.placeholder = " Hello World!"
         textField.backgroundColor = UIColor.whiteColor()
         self.addSubview(textField)
+//        NSLog("")
     }
 }
