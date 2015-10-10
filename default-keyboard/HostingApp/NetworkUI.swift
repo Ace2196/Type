@@ -46,6 +46,7 @@ class NetworkUI:NSObject {
             }
         } get {
             // TODO: implement
+            return ""
         }
     }
     
@@ -140,31 +141,9 @@ class NetworkUI:NSObject {
                     }
                     if results.isSuccess {
                         let receivedResults = JSON(results.value!)
-                        self.OAuthToken = receivedResults["access_token"]
-                        self.scope = receivedResults["scope"]
-                        self.token_type = receivedResults["token_type"]
-//                        let resultParams:Array<String> = receivedResults.characters.split("&")
-//                        for param in resultParams
-//                        {
-//                            let resultsSplit = param.charaters.split { $0 ="=" }
-//                            if (resultsSplit.count == 2)
-//                            {
-//                                let key = resultsSplit[0].lowercaseString // access_token, scope, token_type
-//                                let value = resultsSplit[1]
-//                                switch key {
-//                                case "access_token":
-//                                    self.OAuthToken = value
-//                                case "scope":
-//                                    // TODO: Verify scope.
-//                                    print("SET SCOPE")
-//                                case "token_type":
-//                                    // TODO: Verify is Bearer.
-//                                    print("CHECK IF BEARER")
-//                                default:
-//                                    print("got more than I expected from the OAuth token exchange")
-//                                }
-//                            }
-//                        }
+                        self.OAuthToken = receivedResults["access_token"].string
+//                        self.scope = receivedResults["scope"]
+//                        self.token_type = receivedResults["token_type"]
                     }
                     
                     
