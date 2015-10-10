@@ -32,6 +32,8 @@ class KeyboardViewController: UIInputViewController {
     
     var bannerView: ExtraView?
     var settingsView: ExtraView?
+
+    var currentString = ""
     
     var currentMode: Int {
         didSet {
@@ -69,6 +71,8 @@ class KeyboardViewController: UIInputViewController {
             }
         }
     }
+
+    var uberStateActive = false
     
     // state tracking during shift tap
     var shiftWasMultitapped: Bool = false
@@ -322,7 +326,7 @@ class KeyboardViewController: UIInputViewController {
                         case Key.KeyType.ModeChange:
                             keyView.addTarget(self, action: Selector("modeChangeTapped:"), forControlEvents: .TouchDown)
                         case Key.KeyType.Settings:
-                            keyView.addTarget(self, action: Selector("toggleSettings"), forControlEvents: .TouchUpInside)
+                            keyView.addTarget(self, action: Selector("toggleSettings:"), forControlEvents: .TouchUpInside)
                         default:
                             break
                         }
@@ -534,6 +538,7 @@ class KeyboardViewController: UIInputViewController {
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
+            currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
         }
         self.setCapsIfNeeded()
         
@@ -555,6 +560,7 @@ class KeyboardViewController: UIInputViewController {
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
+            currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
         }
         self.setCapsIfNeeded()
     }
@@ -654,37 +660,9 @@ class KeyboardViewController: UIInputViewController {
         self.advanceToNextInputMode()
     }
     
-    @IBAction func toggleSettings() {
-        // lazy load settings
-        if self.settingsView == nil {
-            if let aSettings = self.createSettings() {
-                aSettings.darkMode = self.darkMode()
-                
-                aSettings.hidden = true
-                self.view.addSubview(aSettings)
-                self.settingsView = aSettings
-                
-                aSettings.translatesAutoresizingMaskIntoConstraints = false
-                
-                let widthConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0)
-                let heightConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
-                let centerXConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-                let centerYConstraint = NSLayoutConstraint(item: aSettings, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-                
-                self.view.addConstraint(widthConstraint)
-                self.view.addConstraint(heightConstraint)
-                self.view.addConstraint(centerXConstraint)
-                self.view.addConstraint(centerYConstraint)
-            }
-        }
-        
-        if let settings = self.settingsView {
-            let hidden = settings.hidden
-            settings.hidden = !hidden
-            self.forwardingView.hidden = hidden
-            self.forwardingView.userInteractionEnabled = !hidden
-            self.bannerView?.hidden = hidden
-        }
+    @IBAction func toggleSettings(sender: KeyboardKey) {
+        uberStateActive = !uberStateActive
+        sender.selected = uberStateActive
     }
     
     func setCapsIfNeeded() -> Bool {
