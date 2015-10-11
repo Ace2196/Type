@@ -59,7 +59,12 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     }
 
     func changeInCurrentString() {
-        locationManager.postInputString(currentString)
+        if currentString.isEmpty {
+            self.suggestions = [String:String]()
+            self.updateHeight()
+        } else {
+            locationManager.postInputString(currentString)
+        }
     }
     
     var autoPeriodState: AutoPeriodState = .NoSpace
@@ -572,7 +577,9 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
-            currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            if !currentString.isEmpty {
+                currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            }
             changeInCurrentString()
         }
         self.setCapsIfNeeded()
@@ -595,7 +602,9 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
         
         if let textDocumentProxy = self.textDocumentProxy as? UIKeyInput {
             textDocumentProxy.deleteBackward()
-            currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            if !currentString.isEmpty {
+                currentString = currentString.substringToIndex(currentString.endIndex.predecessor())
+            }
             changeInCurrentString()
         }
         self.setCapsIfNeeded()

@@ -66,9 +66,6 @@ class Catboard: KeyboardViewController {
                         self.changeInCurrentString()
                         return
                     }
-
-                    textDocumentProxy.insertText("\(randomCat())")
-                    textDocumentProxy.insertText(" ")
                     textDocumentProxy.insertText(keyOutput)
                     currentString += keyOutput
                     self.changeInCurrentString()
