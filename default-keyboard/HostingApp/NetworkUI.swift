@@ -40,13 +40,10 @@ class NetworkUI:NSObject {
     var _OAuthToken: String?
     var OAuthToken: String? {
         set(val) {
-            print(val)
             if val != nil {
-                print("yeah")
-                addSessionHeader("Authorization", value: "Authorization: \(_token_type) \(val)")
+                addSessionHeader("Authorization", value: "Authorization: Bearer \(val!)")
                 _OAuthToken = val
             } else { // they set it to nil
-                print("wut")
                 removeSessionHeaderIfExists("Authorization")
                 _OAuthToken = nil
             }
@@ -129,14 +126,12 @@ class NetworkUI:NSObject {
                 "grant_type": "authorization_code",
                 "redirect_uri": "TypeApp://oauth/callback",
             ]
-            print(tokenParams)
             
             // Step three: Get an access token.
             Alamofire.request(.POST, getTokenPath, parameters: tokenParams)
                 .responseString { (request, response, results) in
                     if let anError = results.error
                     {
-                        print(anError)
                         if let completionHandler = self.OAuthTokenCompletionHandler
                         {
                             let nOAuthError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: "Could not obtain an OAuth token", NSLocalizedRecoverySuggestionErrorKey: "Please retry your request"])
@@ -148,10 +143,17 @@ class NetworkUI:NSObject {
                     }
                     if results.isSuccess {
                         print("succeeded!")
-                        let receivedResults = JSON(results.value!)
-                        self.OAuthToken = receivedResults["access_token"].stringValue
-                        self._scope = receivedResults["scope"].stringValue
-                        self._token_type = receivedResults["token_type"].stringValue
+                        let jsond = JSON(results.value!)
+                        print ( jsond.rawString() )
+                        
+                        var _receivedResults = jsond.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                        var receivedResults = JSON(data:_receivedResults!)
+
+                        print(receivedResults)
+                        self.OAuthToken = receivedResults["access_token"].string
+                        print(receivedResults["access_token"].string)
+                        self._scope = receivedResults["scope"].string
+                        self._token_type = receivedResults["token_type"].string
                     }
                     
                     
@@ -186,6 +188,7 @@ class NetworkUI:NSObject {
     
     /*
     * @params : requestID
+    *           expects "proccessing", "accepted", "arriving", "in_progress", "driver_canceled" and "completed"
     */
     func sendSandboxUberRequest(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
         
@@ -194,6 +197,7 @@ class NetworkUI:NSObject {
         Alamofire.request(.PUT, String(format: "%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID), parameters: params)
             .responseJSON { request, response, result in
                 if result.isSuccess {
+                    print("lol")
                     success(response:result)
                 } else {
                     failure(error: result.error)

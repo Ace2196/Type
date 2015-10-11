@@ -35,19 +35,26 @@ class HostingAppViewController: UIViewController {
             }
         }
     }
-    @IBAction func bestButtonEver(sender: UIButton) {
+    
+    let mapStatus = ["processing", "accepted", "arriving", "in_progress", "driver_canceled", "completed"]
+    var counterStatus = 0
+    
+    @IBAction func advanceStatusSandboxRequest(sender: UIButton) {
         print(server!.hasOAuthToken())
         if server!.hasOAuthToken() {
-            let parameters = ["requestID":""]
+            // Sandbox functionality.
+            let parameters = ["requestID": "test1", "status": mapStatus[counterStatus]]
+            counterStatus += 1
+            counterStatus %= mapStatus.count
+            
             server!.sendSandboxUberRequest(parameters, success: { (response) -> Void in
                 print(response)
                 }) { (error) -> Void in
-                    print ("buang")
+                    print(error.debugDescription)
             }
         } else {
             server?.startOAuthSandboxUber()
         }
-        
     }
     
     var startTime: NSTimeInterval?
