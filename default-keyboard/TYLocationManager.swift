@@ -86,8 +86,20 @@ class TYLocationManager {
 
     func convertJSONResponseToCoordinates(json: JSON) -> [String] {
         var coordinates = [String]()
-        coordinates[0] = json["result"]["geometry"]["location"]["lat"].string!
-        coordinates[1] = json["result"]["geometry"]["location"]["lng"].string!
+        
+        if let lat = json["result"]["geometry"]["location"]["lat"].string {
+            coordinates.append(lat)
+        } else {
+            //Fail silently
+            return []
+        }
+        
+        if let lng = json["result"]["geometry"]["location"]["lng"].string {
+            coordinates.append(lng)
+        } else {
+            //Fail silently
+            return []
+        }
 
         return coordinates
     }
