@@ -93,7 +93,7 @@ class NetworkUI:NSObject {
         if let authURL:NSURL = NSURL(string: authPath) {
             let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setBool(true, forKey: "loadingOauthToken")
-            UIApplication.sharedApplication().openURL(authURL) //TODO: IMP LOGIN
+//            UIApplication.sharedApplication().openURL(authURL) //TODO: IMP LOGIN
         }
     }
     

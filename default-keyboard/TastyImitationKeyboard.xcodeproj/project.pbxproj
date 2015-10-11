@@ -40,7 +40,6 @@
 		5A41E25A1BCA3EF2001A135B /* UberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41E2591BCA3EF2001A135B /* UberManager.swift */; settings = {ASSET_TAGS = (); }; };
 		5A41E25B1BCA3F82001A135B /* NetworkUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1DAD11BC92D76000693E1 /* NetworkUI.swift */; settings = {ASSET_TAGS = (); }; };
 		5A41E25C1BCA3F88001A135B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419847481BC9780B005E570C /* APIKey.swift */; settings = {ASSET_TAGS = (); }; };
-		5A41E25E1BCA5F8C001A135B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41E25D1BCA5F8C001A135B /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */; settings = {ASSET_TAGS = (); }; };
 		5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91C41BC9FA3800CB724D /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
 		5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -144,7 +143,6 @@
 		4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF16F9E19D2552E0076AFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		5A41E2591BCA3EF2001A135B /* UberManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberManager.swift; sourceTree = "<group>"; };
-		5A41E25D1BCA5F8C001A135B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultBanner.swift; sourceTree = "<group>"; };
 		5AED91C41BC9FA3800CB724D /* GappApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GappApiKey.swift; sourceTree = "<group>"; };
 		5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYLocationManager.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 				4E6AEE5319D2489C00931E8F /* Demo */,
 				4E807DBB19461DC700D875D1 /* Supporting Files */,
 				4E52A6D51A06BADA006A08CE /* Media.xcassets */,
-				5A41E25D1BCA5F8C001A135B /* AppDelegate.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -606,7 +603,6 @@
 				4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */,
 				4E52A6D81A06C16C006A08CE /* DefaultSettings.swift in Sources */,
 				5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */,
-				5A41E25E1BCA5F8C001A135B /* AppDelegate.swift in Sources */,
 				4E72C96819E04A7A00DFDDB0 /* Catboard.swift in Sources */,
 				5A41E25A1BCA3EF2001A135B /* UberManager.swift in Sources */,
 				5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */,
