@@ -2,3 +2,5 @@
 project.xcworkspace
 xcuserdata
 HostingApp/APIKey.swift
+GappApiKey.swift
+
