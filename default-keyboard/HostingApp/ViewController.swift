@@ -275,7 +275,6 @@ class HostingAppViewController: UIViewController {
     }
 }
 //    @IBOutlet var stats: UILabel?
->>>>>>> 366a8fbeaf6980d139e3fbfc393ae59353ca331d
 ////    var server: NetworkUI?
 //
 //    override func viewDidLoad() {
