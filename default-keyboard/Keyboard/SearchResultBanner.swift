@@ -12,6 +12,7 @@ class SearchResultBanner: ExtraView, UITableViewDelegate, UITableViewDataSource 
 
     var resultTable: UITableView = UITableView(frame: CGRectZero)
     var results: [String:String]!
+
     required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
         super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
     }
@@ -43,5 +44,15 @@ class SearchResultBanner: ExtraView, UITableViewDelegate, UITableViewDataSource 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let selectedKey = Array(results.keys)[indexPath.row]
+        let locationId = results[selectedKey]
+        if locationId != nil {
+            print(locationId!)
+            TYLocationManager.sharedInstance.postLocationId(locationId!)
+        }
     }
 }

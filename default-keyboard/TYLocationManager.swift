@@ -59,29 +59,17 @@ class TYLocationManager {
     private func makeGetRequest(urlString: String, completion: (json: JSON) -> ()) {
         self.activeRequest?.cancel()
 
-//        let req = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-//        req.HTTPBody = nil
-//        req.HTTPMethod = "GET"
-//        req.addValue("0", forHTTPHeaderField: "Content-Length")
-//        self.activeRequest = requestManager?.request(req).responseJSON { (req, resp, res) in
-//            if let e = res.error {
-//                print(e)
-//            } else {
-//                completion(json: JSON(res.value!))
-//            }
-//        }
-        let params = [:]
-        Alamofire.request(.GET, urlString, parameters: params as? [String : AnyObject])
-            .responseJSON { request, response, result in
-                if result.isSuccess {
-                    completion(json: JSON(result.value!))
-                } else {
-                    print (result.error)
-                }
-                
+        let req = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        req.HTTPBody = nil
+        req.HTTPMethod = "GET"
+        req.addValue("0", forHTTPHeaderField: "Content-Length")
+        self.activeRequest = requestManager?.request(req).responseJSON { (req, resp, res) in
+            if let e = res.error {
+                print(e)
+            } else {
+                completion(json: JSON(res.value!))
+            }
         }
-        
-        
     }
 
     func convertJSONResponseToSearchResults(json: JSON) -> [String: String] {

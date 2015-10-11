@@ -872,6 +872,7 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     func LocationManager(locationManager: TYLocationManager, didReceiveCoordinates coordinates: [String]) {
         // Display the choices
         // Latitude at coordinates[0], Longitude at coordinates[1]
+        print(coordinates)
     }
 
 }
