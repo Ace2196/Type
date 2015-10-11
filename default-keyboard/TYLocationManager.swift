@@ -56,6 +56,31 @@ class TYLocationManager {
         }
     }
 
+//    func getCurrentLocation() {
+//        let urlString = "https://www.googleapis.com/geolocation/v1/geolocate?key=\(GappApiKey.key)"
+//
+//        self.activeRequest?.cancel()
+//
+//        let req = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+//        var body = ["considerIp" : "true"]
+//        var json = JSON(body)
+//        var post:NSData = json.rawData()
+//        var postLength:NSString = String(post.length)
+//
+//        req.HTTPBody = json
+//        req.HTTPMethod = "GET"
+//        req.addValue("0", forHTTPHeaderField: "Content-Length")
+//        self.activeRequest = requestManager?.request(req).responseJSON { (req, resp, res) in
+//            if let e = res.error {
+//                print(e)
+//            } else {
+//                completion(json: JSON(res.value!))
+//            }
+//        }
+//
+//
+//    }
+
     private func makeGetRequest(urlString: String, completion: (json: JSON) -> ()) {
         self.activeRequest?.cancel()
 

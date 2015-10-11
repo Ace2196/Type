@@ -882,6 +882,8 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
         // Display the choices
         // Latitude at coordinates[0], Longitude at coordinates[1]
         print(coordinates)
+        let man = UberManager()
+        man.createUberWrapper(CGFloat(coordinates[0]), endLong: CGFloat(coordinates[1]))
     }
 
 }

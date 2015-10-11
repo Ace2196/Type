@@ -1,25 +1,24 @@
 //
 //  AppDelegate.swift
-//  TransliteratingKeyboard
+//  TastyImitationKeyboard
 //
-//  Created by Alexei Baboulevitch on 6/9/14.
-//  Copyright (c) 2014 Apple. All rights reserved.
+//  Created by Abdulla Contractor on 11/10/15.
+//  Copyright © 2015 Apple. All rights reserved.
 //
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
-    
+
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-//        NetworkUI.sharedInstance.processOAuthStep2Response(url)
+        NetworkUI.sharedInstance.processOAuthStep2Response(url)
         return true
     }
 
@@ -44,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    
 }
 
