@@ -59,14 +59,16 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     }
 
     func changeInCurrentString() {
-        if currentString.isEmpty {
-            self.suggestions = [String:String]()
-            self.updateHeight()
-        } else {
-            locationManager.postInputString(currentString)
+        if self.uberStateActive {
+            if currentString.isEmpty {
+                self.suggestions = [String:String]()
+                self.updateHeight()
+            } else {
+                locationManager.postInputString(currentString)
+            }
         }
     }
-    
+
     var autoPeriodState: AutoPeriodState = .NoSpace
     var lastCharCountInBeforeContext: Int = 0
     
