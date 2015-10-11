@@ -47,12 +47,12 @@ class TYLocationManager {
     }
 
     func postLocationId(id: String) {
-        let urlString = "https://maps.googleapis.com/maps/api/place/details/json?input=\(id)&key=\(GappApiKey.key)"
+        let urlString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(id)&key=\(GappApiKey.key)"
         makeGetRequest(urlString) { json in
-            let coordinates: [String] = self.convertJSONResponseToCoordinates(json)
+            let coordinates: [Double] = self.convertJSONResponseToCoordinates(json)
             self.updateDelegateDestinationCoordinates(coordinates)
 
-            self.getTest(coordinates)
+//            self.getTest(coordinates)
         }
     }
 
@@ -84,17 +84,17 @@ class TYLocationManager {
         return ["":""]
     }
 
-    func convertJSONResponseToCoordinates(json: JSON) -> [String] {
-        var coordinates = [String]()
+    func convertJSONResponseToCoordinates(json: JSON) -> [Double] {
+        var coordinates = [Double]()
         
-        if let lat = json["result"]["geometry"]["location"]["lat"].string {
+        if let lat = json["result"]["geometry"]["location"]["lat"].double {
             coordinates.append(lat)
         } else {
             //Fail silently
             return []
         }
         
-        if let lng = json["result"]["geometry"]["location"]["lng"].string {
+        if let lng = json["result"]["geometry"]["location"]["lng"].double {
             coordinates.append(lng)
         } else {
             //Fail silently
@@ -108,7 +108,7 @@ class TYLocationManager {
         delegate?.LocationManager(self, didReceiveSearches: searches)
     }
 
-    private func updateDelegateDestinationCoordinates(coordinates: [String]) {
+    private func updateDelegateDestinationCoordinates(coordinates: [Double]) {
         delegate?.LocationManager(self, didReceiveCoordinates: coordinates)
     }
 }

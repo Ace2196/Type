@@ -11,6 +11,6 @@ import Foundation
 protocol TYLocationManagerDelegate {
     func LocationManager(locationManager: TYLocationManager, didReceiveSearches searches: [String:String])
 
-    func LocationManager(locationManager: TYLocationManager, didReceiveCoordinates coordinates: [String])
+    func LocationManager(locationManager: TYLocationManager, didReceiveCoordinates coordinates: [Double])
     
 }
