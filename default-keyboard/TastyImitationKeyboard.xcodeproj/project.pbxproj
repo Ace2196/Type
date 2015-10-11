@@ -39,9 +39,9 @@
 		4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */; };
 		4EF16F9F19D2552E0076AFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9D19D2552E0076AFCB /* Main.storyboard */; };
 		5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE96D1BC9E8C100F6F0C6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9621BC98C9200F6F0C6 /* LocationManager.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE96E1BC9E8C300F6F0C6 /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9631BC9953800F6F0C6 /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE96F1BC9E8C600F6F0C6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91C41BC9FA3800CB724D /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91D11BC9FD1000CB724D /* TYLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -139,11 +139,11 @@
 		4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF16F9E19D2552E0076AFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultBanner.swift; sourceTree = "<group>"; };
+		5AED91C41BC9FA3800CB724D /* GappApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GappApiKey.swift; sourceTree = "<group>"; };
+		5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYLocationManager.swift; sourceTree = "<group>"; };
+		5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYLocationManagerDelegate.swift; sourceTree = "<group>"; };
 		630A73CDF88EDD6C8EDB0FC1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		65C4A5145C54CB84E766C433 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACFFE9621BC98C9200F6F0C6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		ACFFE9631BC9953800F6F0C6 /* GappApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GappApiKey.swift; sourceTree = "<group>"; };
-		ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,9 +351,9 @@
 		ACFFE9611BC98C3900F6F0C6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				ACFFE9621BC98C9200F6F0C6 /* LocationManager.swift */,
-				ACFFE9631BC9953800F6F0C6 /* GappApiKey.swift */,
-				ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */,
+				5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */,
+				5AED91C41BC9FA3800CB724D /* GappApiKey.swift */,
+				5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */,
 			);
 			name = Managers;
 			path = ..;
@@ -571,11 +571,9 @@
 			files = (
 				5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */,
 				4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */,
-				ACFFE96E1BC9E8C300F6F0C6 /* GappApiKey.swift in Sources */,
 				4E52A6D41A06A626006A08CE /* ExtraView.swift in Sources */,
 				ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */,
 				4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */,
-				ACFFE96F1BC9E8C600F6F0C6 /* LocationManagerDelegate.swift in Sources */,
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
@@ -584,12 +582,14 @@
 				4EEFD78919E0DC6B004D4974 /* TextFieldBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
+				5AED91D11BC9FD1000CB724D /* TYLocationManagerDelegate.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,
 				4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */,
 				4E52A6D81A06C16C006A08CE /* DefaultSettings.swift in Sources */,
+				5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */,
 				4E72C96819E04A7A00DFDDB0 /* Catboard.swift in Sources */,
+				5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */,
 				4E60A13E1979FB2E00854CC8 /* DirectionEnum.swift in Sources */,
-				ACFFE96D1BC9E8C100F6F0C6 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

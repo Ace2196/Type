@@ -15,9 +15,9 @@ let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kSmallLowercase = "kSmallLowercase"
 
-class KeyboardViewController: UIInputViewController, LocationManagerDelegate {
+class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     
-    let locationManager = LocationManager.sharedInstance
+    let locationManager = TYLocationManager.sharedInstance
     
     let backspaceDelay: NSTimeInterval = 0.5
     let backspaceRepeat: NSTimeInterval = 0.07
@@ -866,13 +866,13 @@ class KeyboardViewController: UIInputViewController, LocationManagerDelegate {
     // OWN METHODS //
     /////////////////
     
-    func LocationManager(locationManager: LocationManager, didReceiveSearches searches: [String:String]) {
+    func LocationManager(locationManager: TYLocationManager, didReceiveSearches searches: [String:String]) {
         // Display the choices
         // Keys are location names, values are location id
         changeSuggestions(searches)
     }
     
-    func LocationManager(locationManager: LocationManager, didReceiveCoordinates coordinates: [String]) {
+    func LocationManager(locationManager: TYLocationManager, didReceiveCoordinates coordinates: [String]) {
         // Display the choices
         // Latitude at coordinates[0], Longitude at coordinates[1]
     }
