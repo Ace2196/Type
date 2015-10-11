@@ -115,7 +115,7 @@ public class LiquidFloatingActionButton : UIView {
     // close all cells
     public func close() {
         // rotate plus icon
-        self.plusLayer.addAnimation(plusKeyframe(false), forKey: "plusRot")
+//        self.plusLayer.addAnimation(plusKeyframe(false), forKey: "plusRot")
         self.plusRotation = 0
     
         self.baseView.close(cellArray())
@@ -240,6 +240,7 @@ public class LiquidFloatingActionButton : UIView {
         circleLayer.addSublayer(plusLayer)
         let viewToAdd = UIImageView(image: UIImage (named: "Driver"))
         viewToAdd.frame = liquidView.frame
+        liquidView.addSubview(viewToAdd)
         liquidView.bringSubviewToFront(viewToAdd)
 
     }
