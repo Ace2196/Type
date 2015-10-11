@@ -110,13 +110,13 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
             kKeyboardClicks: false,
             kSmallLowercase: false
         ])
-        
         self.keyboard = defaultKeyboard()
         
         self.shiftState = .Disabled
         self.currentMode = 0
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        locationManager.delegate = self
         
         self.forwardingView = ForwardingView(frame: CGRectZero)
         self.view.addSubview(self.forwardingView)
@@ -408,10 +408,17 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     }
     
     func changeSuggestions(newSugg: [String:String]) {
+        if self.suggestions.count == 0 {
+            self.bannerView?.removeFromSuperview()
+            self.bannerView = createBanner()
+            self.view.addSubview(self.bannerView!)
+        }
         self.suggestions = newSugg
+        updateHeight()
         if self.bannerView is SearchResultBanner {
-            (self.bannerView as! SearchResultBanner).results = self.suggestions
-                (self.bannerView as! SearchResultBanner).resultTable.reloadData()
+            let ban = self.bannerView as! SearchResultBanner
+            ban.results = self.suggestions
+            ban.resultTable.reloadData()
         }
     }
     
@@ -692,16 +699,6 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
     @IBAction func toggleSettings(sender: KeyboardKey) {
         uberStateActive = !uberStateActive
         sender.selected = uberStateActive
-
-//        if suggestions.count == 0 {
-//            suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
-//        } else {
-//            suggestions = []
-//        }
-        self.bannerView?.removeFromSuperview()
-        self.bannerView = createBanner()
-        self.view.addSubview(self.bannerView!)
-        updateHeight()
     }
     
     func setCapsIfNeeded() -> Bool {

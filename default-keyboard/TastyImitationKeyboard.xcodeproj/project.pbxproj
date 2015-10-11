@@ -42,6 +42,7 @@
 		5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91C41BC9FA3800CB724D /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
 		5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
 		5AED91D11BC9FD1000CB724D /* TYLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91D21BC9FF1500CB724D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9519D255030076AFCB /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -573,6 +574,7 @@
 				4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */,
 				4E52A6D41A06A626006A08CE /* ExtraView.swift in Sources */,
 				ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */,
+				5AED91D21BC9FF1500CB724D /* ViewController.swift in Sources */,
 				4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */,
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
