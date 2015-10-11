@@ -882,8 +882,18 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
         // Display the choices
         // Latitude at coordinates[0], Longitude at coordinates[1]
         print(coordinates)
-        let man = UberManager()
-        man.createUberWrapper(CGFloat(coordinates[0]), endLong: CGFloat(coordinates[1]))
+//        let man = UberManager()
+//        man.createUberWrapper(CGFloat(coordinates[0]), endLong: CGFloat(coordinates[1]))
+//        var frame = CGRectMake(130, 193, 140, 30)
+//        frame = UIScreen.mainScreen().applicationFrame
+//        let frameView = UIView.init(frame: frame)
+        
+        let uberView = UberOverlayView()
+        uberView.setupView()
+        self.view.addSubview(uberView)
+        self.view.bringSubviewToFront(uberView)
+        
     }
+
 
 }

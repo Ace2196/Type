@@ -14,8 +14,12 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
     
-    func viewDidLoad() {
+    func setupView() {
         self.backgroundColor = UIColor.clearColor()
+        let screenFrame = UIScreen.mainScreen().bounds
+//        self.frame = CGRect(x: 0, y: screenFrame.height * CGFloat(2.0/3.0), width: screenFrame.width, height: screenFrame.height / CGFloat(3.0))
+        self.frame=screenFrame
+
         //        self.view.backgroundColor = UIColor(red: 55 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
         // Do any additional setup after loading the view, typically from a nib.
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
@@ -28,7 +32,7 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
         
         let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
             // Get drivers face
-            return LiquidFloatingCell(icon: UIImage(named: "Driver")!)
+            return LiquidFloatingCell(icon: UIImage(named: iconName)!)
         }
         // Calling asset ( Lower )
         cells.append(cellFactory("Call"))
@@ -38,8 +42,8 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
         let frameExpandUpFrame = CGFloat(40.0)
         let bottomLeftPadding = CGFloat(16.0)
         
-        let floatingFrame = CGRect(x: self.frame.width - frameExpandUpFrame - bottomLeftPadding, y: self.frame.height - frameExpandUpFrame - bottomLeftPadding, width: frameExpandUpFrame, height: frameExpandUpFrame)
-        
+        let floatingFrame = CGRect(x: self.frame.width - frameExpandUpFrame - bottomLeftPadding, y: self.frame.height/2 - frameExpandUpFrame - bottomLeftPadding * 2.5, width: frameExpandUpFrame, height: frameExpandUpFrame)
+//        let floatingFrame = screenFrame
         
         let bottomRightButton = createButton(floatingFrame, .Up)
         
