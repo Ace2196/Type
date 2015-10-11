@@ -11,7 +11,7 @@ import UIKit
 class SearchResultBanner: ExtraView, UITableViewDelegate, UITableViewDataSource {
 
     var resultTable: UITableView!
-    var results: [String]!
+    var results: [String:String]!
     required init(globalColors: GlobalColors.Type?, darkMode: Bool, solidColorMode: Bool) {
         super.init(globalColors: globalColors, darkMode: darkMode, solidColorMode: solidColorMode)
     }
@@ -36,7 +36,7 @@ class SearchResultBanner: ExtraView, UITableViewDelegate, UITableViewDataSource 
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.textLabel?.text = results[indexPath.row]
+        cell.textLabel?.text = results[indexPath.row]["name"]
         return cell
     }
 

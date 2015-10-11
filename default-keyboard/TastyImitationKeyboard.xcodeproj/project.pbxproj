@@ -27,7 +27,6 @@
 		4E8EF39819F95D75009CBF5D /* KeyboardFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; };
 		4E8EF39919F95D75009CBF5D /* KeyboardFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E8EF3A019F95D93009CBF5D /* KeyboardFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; };
-		4EC2A46D19DF811E00F789E1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; };
 		4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46A19DF811E00F789E1 /* KeyboardLayout.swift */; };
 		4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46C19DF811E00F789E1 /* ForwardingView.swift */; };
 		4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBD90119F16DC7004FA2A3 /* DefaultKeyboard.swift */; };
@@ -40,9 +39,10 @@
 		4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */; };
 		4EF16F9F19D2552E0076AFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9D19D2552E0076AFCB /* Main.storyboard */; };
 		5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE9651BC9C73C00F6F0C6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9621BC98C9200F6F0C6 /* LocationManager.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE9661BC9C73F00F6F0C6 /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9631BC9953800F6F0C6 /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
-		ACFFE9671BC9C74100F6F0C6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		ACFFE96D1BC9E8C100F6F0C6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9621BC98C9200F6F0C6 /* LocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		ACFFE96E1BC9E8C300F6F0C6 /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9631BC9953800F6F0C6 /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
+		ACFFE96F1BC9E8C600F6F0C6 /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,7 +257,6 @@
 		4E807D8A19461D9000D875D1 = {
 			isa = PBXGroup;
 			children = (
-				ACFFE9611BC98C3900F6F0C6 /* Managers */,
 				4E807D9519461D9000D875D1 /* HostingApp */,
 				4E807DBA19461DC700D875D1 /* Keyboard */,
 				4E8EF38219F95D75009CBF5D /* KeyboardFramework */,
@@ -304,6 +303,7 @@
 		4E807DBA19461DC700D875D1 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				ACFFE9611BC98C3900F6F0C6 /* Managers */,
 				4E6AEE5219D2488B00931E8F /* Controller */,
 				4E6AEE5019D2486900931E8F /* Model */,
 				4E6AEE4F19D2484B00931E8F /* Views */,
@@ -356,6 +356,7 @@
 				ACFFE9641BC9A1AA00F6F0C6 /* LocationManagerDelegate.swift */,
 			);
 			name = Managers;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,12 +558,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACFFE9661BC9C73F00F6F0C6 /* GappApiKey.swift in Sources */,
 				4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */,
 				4EF16F9819D255030076AFCB /* ViewController.swift in Sources */,
-				ACFFE9651BC9C73C00F6F0C6 /* LocationManager.swift in Sources */,
 				419847491BC9780B005E570C /* APIKey.swift in Sources */,
-				ACFFE9671BC9C74100F6F0C6 /* LocationManagerDelegate.swift in Sources */,
 				41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,8 +571,11 @@
 			files = (
 				5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */,
 				4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */,
+				ACFFE96E1BC9E8C300F6F0C6 /* GappApiKey.swift in Sources */,
 				4E52A6D41A06A626006A08CE /* ExtraView.swift in Sources */,
+				ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */,
 				4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */,
+				ACFFE96F1BC9E8C600F6F0C6 /* LocationManagerDelegate.swift in Sources */,
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
@@ -588,7 +589,7 @@
 				4E52A6D81A06C16C006A08CE /* DefaultSettings.swift in Sources */,
 				4E72C96819E04A7A00DFDDB0 /* Catboard.swift in Sources */,
 				4E60A13E1979FB2E00854CC8 /* DirectionEnum.swift in Sources */,
-				4EC2A46D19DF811E00F789E1 /* KeyboardViewController.swift in Sources */,
+				ACFFE96D1BC9E8C100F6F0C6 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

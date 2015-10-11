@@ -9,7 +9,11 @@
 import Foundation
 
 protocol LocationManagerDelegate {
-    func LocationtManager(
+    func LocationManager(
         locationManager: LocationManager, didReceiveSearches searches: [String:String]
+    )
+    
+    func LocationManager(
+        locationManager: LocationManager, didReceiveCoordinates coordinates: [String]
     )
 }

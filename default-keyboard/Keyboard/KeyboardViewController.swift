@@ -15,7 +15,9 @@ let kPeriodShortcut = "kPeriodShortcut"
 let kKeyboardClicks = "kKeyboardClicks"
 let kSmallLowercase = "kSmallLowercase"
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, LocationManagerDelegate {
+    
+    let locationManager = LocationManager.sharedInstance
     
     let backspaceDelay: NSTimeInterval = 0.5
     let backspaceRepeat: NSTimeInterval = 0.07
@@ -28,7 +30,7 @@ class KeyboardViewController: UIInputViewController {
     var bannerView: ExtraView?
     var settingsView: ExtraView?
 
-    var suggestions = [String]()
+    var suggestions = [String:String]()
 
     var metrics: [String:Double] = [String:Double]()
     func metric(name: String) -> CGFloat { return CGFloat(metrics[name]!) }
@@ -57,7 +59,7 @@ class KeyboardViewController: UIInputViewController {
     }
 
     func changeInCurrentString() {
-
+        locationManager.postInputString(currentString)
     }
     
     var autoPeriodState: AutoPeriodState = .NoSpace
@@ -405,6 +407,14 @@ class KeyboardViewController: UIInputViewController {
         self.popupDelayTimer = nil
     }
     
+    func changeSuggestions(newSugg: [String:String]) {
+        self.suggestions = newSugg
+        if self.bannerView is SearchResultBanner {
+            (self.bannerView as! SearchResultBanner).results = self.suggestions
+                (self.bannerView as! SearchResultBanner).resultTable.reloadData()
+        }
+    }
+    
     /////////////////////
     // POPUP DELAY END //
     /////////////////////
@@ -683,11 +693,11 @@ class KeyboardViewController: UIInputViewController {
         uberStateActive = !uberStateActive
         sender.selected = uberStateActive
 
-        if suggestions.count == 0 {
-            suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
-        } else {
-            suggestions = []
-        }
+//        if suggestions.count == 0 {
+//            suggestions = ["Downtown Berkeley Caltrain", "Piedmont"]
+//        } else {
+//            suggestions = []
+//        }
         self.bannerView?.removeFromSuperview()
         self.bannerView = createBanner()
         self.view.addSubview(self.bannerView!)
@@ -851,4 +861,20 @@ class KeyboardViewController: UIInputViewController {
         settingsView.backButton?.addTarget(self, action: Selector("toggleSettings"), forControlEvents: UIControlEvents.TouchUpInside)
         return settingsView
     }
+    
+    /////////////////
+    // OWN METHODS //
+    /////////////////
+    
+    func LocationManager(locationManager: LocationManager, didReceiveSearches searches: [String:String]) {
+        // Display the choices
+        // Keys are location names, values are location id
+        changeSuggestions(searches)
+    }
+    
+    func LocationManager(locationManager: LocationManager, didReceiveCoordinates coordinates: [String]) {
+        // Display the choices
+        // Latitude at coordinates[0], Longitude at coordinates[1]
+    }
+
 }

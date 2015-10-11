@@ -15,6 +15,8 @@ class LocationManager {
     var requestManager: Alamofire.Manager?
     var activeRequest: Alamofire.Request?
     
+    var delegate: LocationManagerDelegate?
+    
     class var sharedInstance : LocationManager {
         struct Singleton {
             static let instance = LocationManager()
@@ -34,12 +36,24 @@ class LocationManager {
         let urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=\(processed)&key=\(GappApiKey.key)"
         makeGetRequest(urlString) { json in
             let results: [String: String] = self.convertJSONResponseToSearchResults(json)
+            self.updateDelegateSearches(results)
+            
             self.getTest(Array(results.keys))
         }
     }
     
     func getTest(test: [String]) {
         print(test)
+    }
+    
+    func postLocationId(id: String) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/details/json?input=\(id)&key=\(GappApiKey.key)"
+        makeGetRequest(urlString) { json in
+            let coordinates: [String] = self.convertJSONResponseToCoordinates(json)
+            self.updateDelegateDestinationCoordinates(coordinates)
+            
+            self.getTest(coordinates)
+        }
     }
     
     private func makeGetRequest(urlString: String, completion: (json: JSON) -> ()) {
@@ -70,4 +84,19 @@ class LocationManager {
         return ["":""]
     }
     
+    func convertJSONResponseToCoordinates(json: JSON) -> [String] {
+        var coordinates = [String]()
+        coordinates[0] = json["result"]["geometry"]["location"]["lat"].string!
+        coordinates[1] = json["result"]["geometry"]["location"]["lng"].string!
+            
+        return coordinates
+    }
+    
+    private func updateDelegateSearches(searches: [String:String]) {
+        delegate?.locationManager(self, didReceiveSearches: searches)
+    }
+    
+    private func updateDelegateDestinationCoordinates(coordinates: [String]) {
+        delegate?.locationManager(self, didReceiveCoordinates: coordinates)
+    }
 }
