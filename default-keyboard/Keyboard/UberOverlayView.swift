@@ -14,9 +14,11 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
     var cells: [LiquidFloatingCell] = []
     var floatingActionButton: LiquidFloatingActionButton!
     
-    func viewDidLoad() {
+    func setupView () {
+        let screenFrame = UIScreen.mainScreen().bounds
+        self.frame = CGRect(x: 0, y: screenFrame.height * CGFloat(2.0/3.0), width: screenFrame.width, height: screenFrame.height / CGFloat(3.0))
         self.backgroundColor = UIColor.clearColor()
-        //        self.view.backgroundColor = UIColor(red: 55 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
+        //                self.backgroundColor = UIColor(red: 55 / 255.0, green: 55 / 255.0, blue: 55 / 255.0, alpha: 1.0)
         // Do any additional setup after loading the view, typically from a nib.
         let createButton: (CGRect, LiquidFloatingActionButtonAnimateStyle) -> LiquidFloatingActionButton = { (frame, style) in
             let floatingActionButton = LiquidFloatingActionButton(frame: frame)
@@ -27,8 +29,9 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
         }
         
         let cellFactory: (String) -> LiquidFloatingCell = { (iconName) in
-            // Get drivers face
-            return LiquidFloatingCell(icon: UIImage(named: "Driver")!)
+            // Get icons
+            let image = UIImage(named: iconName)
+            return LiquidFloatingCell(icon: image!)
         }
         // Calling asset ( Lower )
         cells.append(cellFactory("Call"))

@@ -100,8 +100,8 @@ public class LiquidFloatingActionButton : UIView {
     // open all cells
     public func open() {
         // rotate plus icon
-        self.plusLayer.addAnimation(plusKeyframe(true), forKey: "plusRot")
-        self.plusRotation = CGFloat(M_PI * 0.25) // 45 degree
+//        self.plusLayer.addAnimation(plusKeyframe(true), forKey: "plusRot")
+//        self.plusRotation = CGFloat(M_PI * 0.25) // 45 degree
 
         let cells = cellArray()
         for cell in cells {
@@ -238,6 +238,10 @@ public class LiquidFloatingActionButton : UIView {
         
         liquidView.layer.addSublayer(circleLayer)
         circleLayer.addSublayer(plusLayer)
+        let viewToAdd = UIImageView(image: UIImage (named: "Driver"))
+        viewToAdd.frame = liquidView.frame
+        liquidView.bringSubviewToFront(viewToAdd)
+
     }
 
     private func didTapped() {
@@ -462,7 +466,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
 
 public class LiquidFloatingCell : LiquittableCircle {
     
-    let internalRatio: CGFloat = 0.75
+    let internalRatio: CGFloat = 0.995
 
     public var responsible = true
     public var imageView = UIImageView()
@@ -500,7 +504,7 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     func setup(image: UIImage, tintColor: UIColor = UIColor.whiteColor()) {
-        imageView.image = image.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imageView.image = image
         imageView.tintColor = tintColor
         setupView(imageView)
     }
@@ -512,7 +516,7 @@ public class LiquidFloatingCell : LiquittableCircle {
     }
     
     private func resizeSubviews() {
-        let size = CGSize(width: frame.width * 0.5, height: frame.height * 0.5)
+        let size = CGSize(width: frame.width * 0.99, height: frame.height * 0.99)
         imageView.frame = CGRect(x: frame.width - frame.width * internalRatio, y: frame.height - frame.height * internalRatio, width: size.width, height: size.height)
     }
     

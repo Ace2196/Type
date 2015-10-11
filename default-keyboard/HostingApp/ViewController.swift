@@ -10,7 +10,15 @@ import UIKit
 
 class HostingAppViewController: UIViewController {
     
-//    @IBOutlet var stats: UILabel?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let uberview = UberOverlayView()
+        uberview.setupView()
+        
+        self.view.addSubview(uberview)
+    }
+    
+    @IBOutlet var stats: UILabel?
 ////    var server: NetworkUI?
 //
 //    override func viewDidLoad() {
@@ -26,10 +34,10 @@ class HostingAppViewController: UIViewController {
 ////        TYLocationManager.sharedInstance.postInputString("here")
 //    }
 //
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
-//    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+//
 //    @IBAction func dismiss() {
 //        for view in self.view.subviews {
 //            if let inputView = view as? UITextField {
