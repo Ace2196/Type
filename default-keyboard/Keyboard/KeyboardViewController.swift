@@ -890,8 +890,15 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
 //        frame = UIScreen.mainScreen().applicationFrame
 //        let frameView = UIView.init(frame: frame)
         
+        let sampleMap = UIImageView(frame: CGRectMake(0, 0, 300, 250))
+        sampleMap.image = UIImage(named: "SampleMap1")
+//        sampleMap.contentMode = .ScaleAspectFill
+//        print (sampleMap.frame)
+        
         let uberView = UberOverlayView()
         uberView.setupView()
+        self.view.addSubview(sampleMap)
+        self.view.bringSubviewToFront(sampleMap)
         self.view.addSubview(uberView)
         self.view.bringSubviewToFront(uberView)
         
