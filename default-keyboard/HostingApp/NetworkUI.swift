@@ -25,11 +25,6 @@ class NetworkUI:NSObject {
         return Static.instance!
     }
     
-    /* Static URLs */
-    
-    let kBaseUberSandboxURL = "https://sandbox-api.uber.com/"
-    let kRequestUber = "/v1/sandbox/requests/" // Requires appending of request_id
-    
     /* Static Info */
     
     let clientID = CLIENT_ID
@@ -185,24 +180,73 @@ class NetworkUI:NSObject {
         }
     }
     
+    /* Static URLs */
+    
+    let kBaseUberSandboxURL = "https://sandbox-api.uber.com/"
+    let kSandboxRequestUber = "/v1/sandbox/requests/" // Requires appending of request_id
+    let kRequestUber = "/v1/requests/"
     
     /*
     * @params : requestID
     *           expects "proccessing", "accepted", "arriving", "in_progress", "driver_canceled" and "completed"
     */
-    func sendSandboxUberRequest(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
-        
+    func sendSandboxUberRequestStringResponse(params:[String: AnyObject], success: (response: Result<String>) -> Void, failure: (error: ErrorType?) -> Void) {
         let requestID = params["requestID"] as! String
         
-        Alamofire.request(.PUT, String(format: "%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID), parameters: params)
+        Alamofire.request(.PUT, String(format: "%@%@%@", kBaseUberSandboxURL, kSandboxRequestUber, requestID), parameters: params)
+            .responseString { _, _, result in success(response: result) }
+        
+    }
+    
+    func getSandboxUberRequestJSONResponse(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
+        let requestID = params["requestID"] as! String
+        let extensionID = params["extensionID"] as! String
+        
+        Alamofire.request(.GET, String(format: "%@%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID, extensionID), parameters: params)
             .responseJSON { request, response, result in
                 if result.isSuccess {
-                    print("lol")
-                    success(response:result)
+                    success(response: result)
+                } else {
+                    failure(error: result.error)
+                }
+            }
+    }
+    
+    func postSandboxUberRequestJSONResponse(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
+        let requestID = params["requestID"] as! String
+        let extensionID = params["extensionID"] as! String
+        
+        Alamofire.request(.POST, String(format: "%@%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID, extensionID), parameters: params)
+            .responseJSON { request, response, result in
+                if result.isSuccess {
+                    success(response: result)
+                } else {
+                    failure(error: result.error)
+                }
+        }
+    }
+    
+    func deleteSandboxUberRequestStringResponse(params:[String: AnyObject], success: (response: Result<String>) -> Void, failure: (error: ErrorType?) -> Void) {
+        let requestID = params["requestID"] as! String
+        let extensionID = params["extensionID"] as! String
+        
+        Alamofire.request(.DELETE, String(format: "%@%@%@%@", kBaseUberSandboxURL, kRequestUber, requestID, extensionID), parameters: params)
+                .responseString { _, _, result in success(response: result) }
+        
+    }
+    
+    func createSandboxUberRequestJSONResponse(params:[String: AnyObject], success: (response: Result<AnyObject>) -> Void, failure: (error: ErrorType?) -> Void) {
+        Alamofire.request(.POST, String(format: "%@%@%@", kBaseUberSandboxURL, kRequestUber), parameters: params)
+            .responseJSON { request, response, result in
+                if result.isSuccess {
+                    success(response: result)
                 } else {
                     failure(error: result.error)
                 }
                 
-            }
+        }
     }
+    
+        
+
 }
