@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2712EA3AF901019A96E63E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C4A5145C54CB84E766C433 /* Pods.framework */; };
 		419847491BC9780B005E570C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419847481BC9780B005E570C /* APIKey.swift */; settings = {ASSET_TAGS = (); }; };
+		41C12D5C1BCA27C7009E9E85 /* UberOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */; settings = {ASSET_TAGS = (); }; };
 		41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1DAD11BC92D76000693E1 /* NetworkUI.swift */; settings = {ASSET_TAGS = (); }; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
@@ -27,7 +28,6 @@
 		4E8EF39819F95D75009CBF5D /* KeyboardFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; };
 		4E8EF39919F95D75009CBF5D /* KeyboardFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E8EF3A019F95D93009CBF5D /* KeyboardFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8EF38119F95D74009CBF5D /* KeyboardFramework.framework */; };
-		4EC2A46D19DF811E00F789E1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; };
 		4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46A19DF811E00F789E1 /* KeyboardLayout.swift */; };
 		4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46C19DF811E00F789E1 /* ForwardingView.swift */; };
 		4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBD90119F16DC7004FA2A3 /* DefaultKeyboard.swift */; };
@@ -39,6 +39,12 @@
 		4EF16F9819D255030076AFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9519D255030076AFCB /* ViewController.swift */; };
 		4EF16F9B19D2550D0076AFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */; };
 		4EF16F9F19D2552E0076AFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF16F9D19D2552E0076AFCB /* Main.storyboard */; };
+		5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91C41BC9FA3800CB724D /* GappApiKey.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91D11BC9FD1000CB724D /* TYLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		5AED91D21BC9FF1500CB724D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF16F9519D255030076AFCB /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC2A46919DF811E00F789E1 /* KeyboardViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +106,7 @@
 /* Begin PBXFileReference section */
 		2E36CFB813272E3B4FEADFAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		419847481BC9780B005E570C /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberOverlayView.swift; sourceTree = "<group>"; };
 		41F1DAD11BC92D76000693E1 /* NetworkUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUI.swift; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
@@ -134,6 +141,10 @@
 		4EF16F9519D255030076AFCB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4EF16F9A19D2550D0076AFCB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF16F9E19D2552E0076AFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultBanner.swift; sourceTree = "<group>"; };
+		5AED91C41BC9FA3800CB724D /* GappApiKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GappApiKey.swift; sourceTree = "<group>"; };
+		5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYLocationManager.swift; sourceTree = "<group>"; };
+		5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TYLocationManagerDelegate.swift; sourceTree = "<group>"; };
 		630A73CDF88EDD6C8EDB0FC1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		65C4A5145C54CB84E766C433 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +205,7 @@
 				4E52A6D71A06C16C006A08CE /* DefaultSettings.swift */,
 				4E52A6D91A06C198006A08CE /* DefaultSettings.xib */,
 				4EEFD78A19E0DF15004D4974 /* Shapes.swift */,
+				41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -223,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				4E6AEE4B19D246D700931E8F /* Catboard.swift */,
+				5A98F4D11BC9D19B00548407 /* SearchResultBanner.swift */,
 				4EEFD78819E0DC6B004D4974 /* TextFieldBanner.swift */,
 			);
 			name = Demo;
@@ -294,6 +307,7 @@
 		4E807DBA19461DC700D875D1 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				ACFFE9611BC98C3900F6F0C6 /* Managers */,
 				4E6AEE5219D2488B00931E8F /* Controller */,
 				4E6AEE5019D2486900931E8F /* Model */,
 				4E6AEE4F19D2484B00931E8F /* Views */,
@@ -336,6 +350,17 @@
 				4EE7599A19F75A0D00B4E6ED /* Utilities.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		ACFFE9611BC98C3900F6F0C6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5AED91D01BC9FD1000CB724D /* TYLocationManagerDelegate.swift */,
+				5AED91C41BC9FA3800CB724D /* GappApiKey.swift */,
+				5AED91CE1BC9FCD600CB724D /* TYLocationManager.swift */,
+			);
+			name = Managers;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,23 +573,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A98F4D21BC9D19B00548407 /* SearchResultBanner.swift in Sources */,
 				4E52A6D21A06A61F006A08CE /* ImageKey.swift in Sources */,
 				4E52A6D41A06A626006A08CE /* ExtraView.swift in Sources */,
+				ACFFE9701BC9E92A00F6F0C6 /* KeyboardViewController.swift in Sources */,
+				5AED91D21BC9FF1500CB724D /* ViewController.swift in Sources */,
 				4EC2A47019DF811E00F789E1 /* ForwardingView.swift in Sources */,
 				4EC2A46E19DF811E00F789E1 /* KeyboardLayout.swift in Sources */,
 				4E60A13A1979FA5C00854CC8 /* KeyboardKeyBackground.swift in Sources */,
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
 				4E60A13C1979FA8E00854CC8 /* KeyboardConnector.swift in Sources */,
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
+				41C12D5C1BCA27C7009E9E85 /* UberOverlayView.swift in Sources */,
 				4EEFD78919E0DC6B004D4974 /* TextFieldBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
+				5AED91D11BC9FD1000CB724D /* TYLocationManagerDelegate.swift in Sources */,
 				4ECBD90219F16DC7004FA2A3 /* DefaultKeyboard.swift in Sources */,
 				4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */,
 				4E52A6D81A06C16C006A08CE /* DefaultSettings.swift in Sources */,
+				5AED91CF1BC9FCD600CB724D /* TYLocationManager.swift in Sources */,
 				4E72C96819E04A7A00DFDDB0 /* Catboard.swift in Sources */,
+				5AED91C51BC9FA3800CB724D /* GappApiKey.swift in Sources */,
 				4E60A13E1979FB2E00854CC8 /* DirectionEnum.swift in Sources */,
-				4EC2A46D19DF811E00F789E1 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
