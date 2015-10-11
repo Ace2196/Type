@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2712EA3AF901019A96E63E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C4A5145C54CB84E766C433 /* Pods.framework */; };
 		419847491BC9780B005E570C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419847481BC9780B005E570C /* APIKey.swift */; settings = {ASSET_TAGS = (); }; };
+		41C12D5C1BCA27C7009E9E85 /* UberOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */; settings = {ASSET_TAGS = (); }; };
 		41F1DAD21BC92D76000693E1 /* NetworkUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F1DAD11BC92D76000693E1 /* NetworkUI.swift */; settings = {ASSET_TAGS = (); }; };
 		4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E807DC81946209600D875D1 /* KeyboardKey.swift */; };
 		4E3B5A941A0654A8003366F6 /* KeyboardInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		2E36CFB813272E3B4FEADFAB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		419847481BC9780B005E570C /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberOverlayView.swift; sourceTree = "<group>"; };
 		41F1DAD11BC92D76000693E1 /* NetworkUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUI.swift; sourceTree = "<group>"; };
 		4E3B5A931A0654A8003366F6 /* KeyboardInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputTraits.swift; sourceTree = "<group>"; };
 		4E52A6D11A06A61F006A08CE /* ImageKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				4E52A6D71A06C16C006A08CE /* DefaultSettings.swift */,
 				4E52A6D91A06C198006A08CE /* DefaultSettings.xib */,
 				4EEFD78A19E0DF15004D4974 /* Shapes.swift */,
+				41C12D5B1BCA27C7009E9E85 /* UberOverlayView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				4E5B67A2196E03B700114361 /* KeyboardModel.swift in Sources */,
 				4E60A13C1979FA8E00854CC8 /* KeyboardConnector.swift in Sources */,
 				4E00A6E5197183EE009414F2 /* KeyboardKey.swift in Sources */,
+				41C12D5C1BCA27C7009E9E85 /* UberOverlayView.swift in Sources */,
 				4EEFD78919E0DC6B004D4974 /* TextFieldBanner.swift in Sources */,
 				4EE7599B19F75A0D00B4E6ED /* Utilities.swift in Sources */,
 				4EEFD78B19E0DF15004D4974 /* Shapes.swift in Sources */,
