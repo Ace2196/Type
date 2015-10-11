@@ -890,7 +890,7 @@ class KeyboardViewController: UIInputViewController, TYLocationManagerDelegate {
 //        frame = UIScreen.mainScreen().applicationFrame
 //        let frameView = UIView.init(frame: frame)
         
-        let sampleMap = UIImageView(frame: CGRectMake(0, 0, 300, 250))
+        let sampleMap = UIImageView(frame: CGRectMake(0, 0, 375, 310))
         sampleMap.image = UIImage(named: "SampleMap1")
 //        sampleMap.contentMode = .ScaleAspectFill
 //        print (sampleMap.frame)

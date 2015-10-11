@@ -39,8 +39,8 @@ class UberOverlayView: UIView, LiquidFloatingActionButtonDataSource, LiquidFloat
         // Messaging asset ( Upper )
         cells.append(cellFactory("Info"))
         
-        let frameExpandUpFrame = CGFloat(40.0)
-        let bottomLeftPadding = CGFloat(16.0)
+        let frameExpandUpFrame = CGFloat(55.0)
+        let bottomLeftPadding = CGFloat(17.0)
         
         let floatingFrame = CGRect(x: self.frame.width - frameExpandUpFrame - bottomLeftPadding, y: self.frame.height/2 - frameExpandUpFrame - bottomLeftPadding * 2.5, width: frameExpandUpFrame, height: frameExpandUpFrame)
 //        let floatingFrame = screenFrame
