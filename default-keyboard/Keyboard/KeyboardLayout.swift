@@ -466,7 +466,7 @@ class KeyboardLayout: NSObject, KeyboardKeyProtocol {
             if model.type == Key.KeyType.Settings {
                 if let imageKey = key as? ImageKey {
                     if imageKey.image == nil {
-                        let gearImage = UIImage(named: "gear")
+                        let gearImage = UIImage(named: "logo_deselected-2")
                         let settingsImageView = UIImageView(image: gearImage)
                         imageKey.image = settingsImageView
                     }
