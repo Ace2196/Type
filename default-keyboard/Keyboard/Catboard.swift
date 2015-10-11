@@ -44,6 +44,8 @@ class Catboard: KeyboardViewController {
                 if context != nil {
                     if context!.characters.count < 2 {
                         textDocumentProxy.insertText(keyOutput)
+                        currentString += keyOutput
+                        self.changeInCurrentString()
                         return
                     }
                     
@@ -52,27 +54,37 @@ class Catboard: KeyboardViewController {
                     index = index.predecessor()
                     if (context as String!)[index] != " " {
                         textDocumentProxy.insertText(keyOutput)
+                        currentString += keyOutput
+                        self.changeInCurrentString()
                         return
                     }
                     
                     index = index.predecessor()
                     if (context as String!)[index] == " " {
                         textDocumentProxy.insertText(keyOutput)
+                        currentString += keyOutput
+                        self.changeInCurrentString()
                         return
                     }
 
                     textDocumentProxy.insertText("\(randomCat())")
                     textDocumentProxy.insertText(" ")
                     textDocumentProxy.insertText(keyOutput)
+                    currentString += keyOutput
+                    self.changeInCurrentString()
                     return
                 }
                 else {
                     textDocumentProxy.insertText(keyOutput)
+                    currentString += keyOutput
+                    self.changeInCurrentString()
                     return
                 }
             }
             else {
                 textDocumentProxy.insertText(keyOutput)
+                currentString += keyOutput
+                self.changeInCurrentString()
                 return
             }
         }

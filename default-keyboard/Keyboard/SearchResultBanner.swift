@@ -27,8 +27,9 @@ class SearchResultBanner: ExtraView, UITableViewDelegate, UITableViewDataSource 
     override func layoutSubviews() {
 
         super.layoutSubviews()
-
-        self.resultTable = UITableView(frame: self.frame)
+        
+        self.resultTable = UITableView(frame: CGRectMake(0, 3, self.frame.width, self.frame.height - 3))
+        self.resultTable.backgroundColor = UIColor.lightGrayColor()
         self.resultTable.delegate = self
         self.resultTable.dataSource = self
         self.addSubview(resultTable)
